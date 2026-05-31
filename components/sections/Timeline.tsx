@@ -31,15 +31,18 @@ export function Timeline() {
 
     tl.to(roadRef.current, { y: '-60%', ease: 'none' }, 0)
 
+    const step = 0.22
     milestones.forEach((card, i) => {
+      // Fade in
       tl.fromTo(
         card,
-        { opacity: 0, scale: 0.85, y: 30 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.3 },
-        i * 0.2
+        { opacity: 0, scale: 0.88, y: 24 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.18, ease: 'power2.out' },
+        i * step
       )
+      // Fade out (except last card stays visible)
       if (i < milestones.length - 1) {
-        tl.to(card, { opacity: 0.2, duration: 0.15 }, i * 0.2 + 0.18)
+        tl.to(card, { opacity: 0, scale: 0.92, duration: 0.1, ease: 'power2.in' }, i * step + 0.15)
       }
     })
   }, { scope: containerRef })
@@ -76,18 +79,21 @@ export function Timeline() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center gap-16 py-24 md:gap-24 md:py-40">
-        <p
-          className="text-chapter text-white/20 mb-16 absolute top-12"
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          The Journey
-        </p>
+      {/* Label — pinned at top, never overlaps cards */}
+      <p
+        className="absolute top-10 left-1/2 -translate-x-1/2 text-chapter text-white/20 z-10 whitespace-nowrap"
+        style={{ fontFamily: 'var(--font-display)' }}
+      >
+        The Journey
+      </p>
 
+      {/* All cards stacked at the same center position — GSAP fades one at a time */}
+      <div className="relative z-10 w-full flex items-center justify-center" style={{ height: '100%' }}>
         {MILESTONES.map((m, i) => (
           <div
             key={i}
-            className="milestone-card glass px-5 py-5 sm:px-8 sm:py-6 text-center max-w-xs sm:max-w-sm w-full opacity-0"
+            className="milestone-card glass px-5 py-6 sm:px-8 sm:py-8 text-center w-full max-w-xs sm:max-w-sm absolute"
+            style={{ opacity: 0 }}
           >
             <span
               className="block text-5xl font-bold mb-2"
