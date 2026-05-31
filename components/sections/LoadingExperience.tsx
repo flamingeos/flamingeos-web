@@ -85,12 +85,17 @@ export function LoadingExperience({ onComplete }: LoadingExperienceProps) {
         )}
       </AnimatePresence>
 
-      {/* Logo + shatter scene */}
-      {(phase === 'logo' || phase === 'shatter') && (
-        <div className="w-full h-full absolute inset-0">
-          <LoadingScene shatter={phase === 'shatter'} />
-        </div>
-      )}
+      {/* R3F scene — rendered from start so dynamic import resolves during text phase */}
+      <div
+        className="w-full h-full absolute inset-0"
+        style={{
+          opacity: phase === 'logo' || phase === 'shatter' ? 1 : 0,
+          transition: 'opacity 0.4s ease',
+          pointerEvents: phase === 'logo' || phase === 'shatter' ? 'auto' : 'none',
+        }}
+      >
+        <LoadingScene shatter={phase === 'shatter'} />
+      </div>
     </motion.div>
   )
 }

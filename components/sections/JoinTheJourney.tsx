@@ -4,40 +4,40 @@ import { motion } from 'framer-motion'
 import { GlassCard } from '@/components/ui/GlassCard'
 
 const SOCIALS = [
-  { platform: 'TikTok', handle: '@flamingeos', followers: '2.5M', url: 'https://tiktok.com/@flamingeos', color: '#a8d8ff' },
-  { platform: 'Instagram', handle: '@flamingeos', followers: '913K', url: 'https://instagram.com/flamingeos', color: '#f97316' },
-  { platform: 'YouTube', handle: 'Flamingeos', followers: '520K', url: 'https://youtube.com/c/flamingeos', color: '#c9a84c' },
-  { platform: 'Twitch', handle: 'flamingeos', followers: '', url: 'https://twitch.tv/flamingeos', color: '#22d3ee' },
+  { platform: 'TikTok', handle: '@flamingeos', followers: '2.5M', url: 'https://tiktok.com/@flamingeos' },
+  { platform: 'Instagram', handle: '@flamingeos', followers: '913K', url: 'https://instagram.com/flamingeos' },
+  { platform: 'YouTube', handle: 'Flamingeos', followers: '520K', url: 'https://youtube.com/c/flamingeos' },
+  { platform: 'Twitch', handle: 'flamingeos', followers: '', url: 'https://twitch.tv/flamingeos' },
 ]
 
 const BUDGETS = ['Under $5K', '$5K–$10K', '$10K–$50K', '$50K+', "Let's talk"]
 
 function SocialCards() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl">
+    <div className="grid grid-cols-2 gap-3 w-full sm:gap-4">
       {SOCIALS.map((s, i) => (
         <motion.a
           key={s.platform}
           href={s.url}
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.5 }}
+          transition={{ delay: i * 0.08, duration: 0.5 }}
         >
-          <GlassCard className="p-5 text-center h-full">
+          <GlassCard className="p-4 sm:p-5 text-center h-full">
             <p
-              className="text-lg font-bold mb-1"
-              style={{ fontFamily: 'var(--font-display)', color: s.color }}
+              className="text-base sm:text-lg font-bold mb-1"
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--accent)' }}
             >
               {s.platform}
             </p>
             <p className="text-xs text-white/40">{s.handle}</p>
             {s.followers && (
               <p
-                className="text-2xl font-bold mt-3"
-                style={{ fontFamily: 'var(--font-display)', color: s.color }}
+                className="text-xl sm:text-2xl font-bold mt-2"
+                style={{ fontFamily: 'var(--font-display)', color: 'var(--accent)' }}
               >
                 {s.followers}
               </p>
@@ -112,7 +112,7 @@ function ContactForm() {
         type="submit"
         disabled={status === 'sending'}
         className="w-full py-4 font-bold tracking-widest text-sm uppercase text-black rounded-lg disabled:opacity-50"
-        style={{ background: 'var(--zone-5-accent)', fontFamily: 'var(--font-display)' }}
+        style={{ background: 'var(--accent)', color: '#080808', fontFamily: 'var(--font-display)' }}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -128,48 +128,50 @@ function ContactForm() {
 export function JoinTheJourney() {
   return (
     <section
-      className="section flex-col gap-20 py-32"
+      className="section flex-col"
       style={{ background: 'var(--zone-5-bg)' }}
       id="join"
     >
-      {/* Follow the Adventure */}
-      <div className="flex flex-col items-center gap-8 w-full px-6">
-        <motion.h2
-          className="text-chapter text-white text-center"
-          style={{ fontFamily: 'var(--font-display)' }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Follow the Adventure
-        </motion.h2>
-        <SocialCards />
-      </div>
+      <div className="section-inner gap-16">
+        {/* Follow the Adventure */}
+        <div className="flex flex-col items-center gap-6 w-full">
+          <motion.h2
+            className="text-chapter w-full text-center"
+            style={{ color: 'var(--accent)', opacity: 0.9, fontFamily: 'var(--font-display)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 0.9, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Follow the Adventure
+          </motion.h2>
+          <SocialCards />
+        </div>
 
-      {/* Divider */}
-      <div className="w-px h-24 bg-white/10" />
+        {/* Divider */}
+        <div className="w-px h-16 bg-white/10 self-center" />
 
-      {/* Work Together */}
-      <div className="flex flex-col items-center gap-8 w-full px-6">
-        <motion.h2
-          className="text-chapter text-white text-center"
-          style={{ fontFamily: 'var(--font-display)' }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Work Together
-        </motion.h2>
-        <motion.p
-          className="text-white/40 text-sm text-center max-w-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          Brand partnerships, sponsored content, and collaborations.
-        </motion.p>
-        <ContactForm />
+        {/* Work Together */}
+        <div className="flex flex-col items-center gap-6 w-full">
+          <motion.h2
+            className="text-chapter w-full text-center"
+            style={{ color: 'var(--accent)', opacity: 0.9, fontFamily: 'var(--font-display)' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 0.9, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Work Together
+          </motion.h2>
+          <motion.p
+            className="text-white/40 text-sm text-center max-w-sm"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Brand partnerships, sponsored content, and collaborations.
+          </motion.p>
+          <ContactForm />
+        </div>
       </div>
     </section>
   )

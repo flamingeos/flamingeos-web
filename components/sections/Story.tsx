@@ -42,29 +42,32 @@ export function Story() {
   return (
     <section
       ref={sectionRef}
-      className="section flex-col gap-8 py-32"
+      className="section flex-col"
       style={{ background: 'var(--zone-2-bg)' }}
       id="story"
     >
-      <motion.p
-        className="text-chapter text-white/20 mb-8"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        From Puerto Rico to the World
-      </motion.p>
+      <div className="section-inner">
+        <motion.p
+          className="text-chapter w-full"
+          style={{ color: 'var(--accent)', opacity: 0.5 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.5 }}
+          viewport={{ once: true }}
+        >
+          From Puerto Rico to the World
+        </motion.p>
 
-      <div className="max-w-2xl px-6 space-y-6">
-        {LINES.map((line, i) => (
-          <p
-            key={i}
-            className="story-line text-2xl md:text-4xl font-semibold text-white leading-tight"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            {line}
-          </p>
-        ))}
+        <div className="w-full space-y-8 mt-4">
+          {LINES.map((line, i) => (
+            <p
+              key={i}
+              className="story-line text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-snug"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              {line}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   )

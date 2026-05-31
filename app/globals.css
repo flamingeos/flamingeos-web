@@ -22,25 +22,20 @@
 
 /* ─── Design tokens ─────────────────────────────────────── */
 :root {
-  /* Zone 1 — Void */
+  /* Unified dark backgrounds — subtle variations only */
   --zone-1-bg: #080808;
+  --zone-2-bg: #080808;
+  --zone-3-bg: #060606;
+  --zone-4-bg: #080808;
+  --zone-5-bg: #080808;
+
+  /* Single accent — warm amber gold */
+  --accent: #d4a853;
+  --accent-dim: rgba(212, 168, 83, 0.15);
+
+  /* Legacy zone accents (kept for Three.js scenes only) */
   --zone-1-accent: #a8d8ff;
-
-  /* Zone 2 — Ocean */
-  --zone-2-bg: #0c1a2e;
   --zone-2-accent: #22d3ee;
-
-  /* Zone 3 — Energy */
-  --zone-3-bg: #0f0f0f;
-  --zone-3-accent: #f97316;
-
-  /* Zone 4 — Obsidian */
-  --zone-4-bg: #0a0a0a;
-  --zone-4-accent: #c9a84c;
-
-  /* Zone 5 — Focus */
-  --zone-5-bg: #0d0d0d;
-  --zone-5-accent: #f8f8f8;
 
   /* Typography */
   --font-display: 'Clash Display', sans-serif;
@@ -48,9 +43,8 @@
   --font-mono: 'Space Mono', monospace;
   --font-quote: 'Cabinet Grotesk', sans-serif;
 
-  /* Active zone (body background default — sections override via inline style) */
+  /* Body background */
   --bg: var(--zone-1-bg);
-  --accent: var(--zone-1-accent);
 }
 
 /* ─── Reset ─────────────────────────────────────────────── */
@@ -85,7 +79,7 @@ body::after {
 
 .text-hero {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 15vw, 14rem);
+  font-size: clamp(2.8rem, 10vw, 12rem);
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -93,15 +87,17 @@ body::after {
 
 .text-chapter {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: clamp(1.6rem, 4.5vw, 4rem);
   font-weight: 600;
   letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 .text-stat {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(2rem, 6vw, 5.5rem);
   font-weight: 700;
+  line-height: 1;
 }
 
 /* ─── Glass morphism ────────────────────────────────────── */
@@ -122,4 +118,21 @@ body::after {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 5rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Inner content container — prevents edge bleed on mobile */
+.section-inner {
+  width: 100%;
+  max-width: 56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }

@@ -51,7 +51,7 @@ export function Stats() {
       style={{ background: 'var(--zone-3-bg)' }}
       id="stats"
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 px-6 max-w-5xl w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 w-full max-w-4xl">
         {STATS.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -62,7 +62,7 @@ export function Stats() {
           >
             <div
               className="text-stat mb-2"
-              style={{ color: 'var(--zone-3-accent)', fontFamily: 'var(--font-display)' }}
+              style={{ color: 'var(--accent)', fontFamily: 'var(--font-display)' }}
             >
               <CountUp target={stat.value} inView={isInView} />
             </div>

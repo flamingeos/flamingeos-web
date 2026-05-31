@@ -68,7 +68,7 @@ export function Timeline() {
             transformOrigin: 'top center',
             width: '2px',
             height: '400%',
-            background: 'linear-gradient(to bottom, transparent, rgba(249,115,22,0.3), rgba(249,115,22,0.7))',
+            background: 'linear-gradient(to bottom, transparent, rgba(212,168,83,0.3), rgba(212,168,83,0.7))',
             left: '50%',
             position: 'absolute',
             top: '0',
@@ -76,7 +76,7 @@ export function Timeline() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center gap-24 py-40">
+      <div className="relative z-10 flex flex-col items-center justify-center gap-16 py-24 md:gap-24 md:py-40">
         <p
           className="text-chapter text-white/20 mb-16 absolute top-12"
           style={{ fontFamily: 'var(--font-display)' }}
@@ -87,11 +87,11 @@ export function Timeline() {
         {MILESTONES.map((m, i) => (
           <div
             key={i}
-            className="milestone-card glass px-8 py-6 text-center max-w-sm w-full opacity-0"
+            className="milestone-card glass px-5 py-5 sm:px-8 sm:py-6 text-center max-w-xs sm:max-w-sm w-full opacity-0"
           >
             <span
               className="block text-5xl font-bold mb-2"
-              style={{ fontFamily: 'var(--font-mono)', color: 'var(--zone-3-accent)' }}
+              style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)' }}
             >
               {m.year}
             </span>
