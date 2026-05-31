@@ -1,6 +1,10 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let _resend: Resend | null = null
+function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY)
+  return _resend
+}
 
 export async function sendContactNotification(data: {
   name: string
@@ -19,7 +23,7 @@ export async function sendContactNotification(data: {
     data.message,
   ].filter((l) => l !== null)
 
-  return resend.emails.send({
+  return getResend().emails.send({
     from: 'FLAMINGEOS <noreply@flamingeos.com>',
     to: 'hq@flamingeos.com',
     replyTo: data.email,
