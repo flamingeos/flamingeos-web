@@ -72,7 +72,8 @@ function ContactForm() {
       } else {
         setStatus('error')
       }
-    } catch {
+    } catch (err) {
+      console.error('[contact form]', err)
       setStatus('error')
     }
   }

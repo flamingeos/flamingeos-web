@@ -12,12 +12,14 @@ import { JoinTheJourney } from '@/components/sections/JoinTheJourney'
 import { Footer } from '@/components/sections/Footer'
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState<boolean | null>(null)
 
   useEffect(() => {
     const seen = localStorage.getItem('geo_visited')
-    if (seen) setLoading(false)
+    setLoading(!seen)
   }, [])
+
+  if (loading === null) return null
 
   const handleLoadingComplete = () => {
     localStorage.setItem('geo_visited', 'true')
@@ -27,7 +29,7 @@ export default function Home() {
   return (
     <>
       <AnimatePresence>
-        {loading && (
+        {loading === true && (
           <LoadingExperience onComplete={handleLoadingComplete} />
         )}
       </AnimatePresence>

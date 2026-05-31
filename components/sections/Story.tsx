@@ -1,7 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
-import { gsap, ScrollTrigger } from '@/lib/gsap-config'
+import { gsap } from '@/lib/gsap-config'
 import { motion } from 'framer-motion'
 
 const LINES = [

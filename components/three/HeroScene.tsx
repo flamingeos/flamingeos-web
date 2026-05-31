@@ -51,11 +51,12 @@ function Scene({ mouse }: { mouse: { x: number; y: number } }) {
 }
 
 export default function HeroScene({ mouse }: { mouse: { x: number; y: number } }) {
+  const capability = useDeviceCapability()
   return (
     <Canvas
       camera={{ position: [0, 0, 5], fov: 60 }}
-      gl={{ antialias: false, alpha: true }}
-      dpr={[1, 1.5]}
+      gl={{ antialias: capability !== 'low', alpha: true }}
+      dpr={capability === 'low' ? 1 : [1, 1.5]}
     >
       <Scene mouse={mouse} />
     </Canvas>

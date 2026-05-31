@@ -48,7 +48,7 @@
   --font-mono: 'Space Mono', monospace;
   --font-quote: 'Cabinet Grotesk', sans-serif;
 
-  /* Active zone (updated by JS) */
+  /* Active zone (body background default — sections override via inline style) */
   --bg: var(--zone-1-bg);
   --accent: var(--zone-1-accent);
 }
